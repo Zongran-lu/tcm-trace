@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中药制剂全流程区块链溯源</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 16px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        header {
+            background: #1a5f4a;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        header h1 { font-size: 1.5rem; margin-bottom: 8px; }
+        header p { opacity: 0.9; font-size: 0.95rem; }
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+        .section h2 {
+            color: #1a5f4a;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #e0efe9;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+        }
+        .herb-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+        .herb-card {
+            background: #f8fbf9;
+            border: 1px solid #d4e8df;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+            text-decoration: none;
+            color: #1a5f4a;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .herb-card:hover, .herb-card:active {
+            background: #1a5f4a;
+            color: white;
+            transform: translateY(-2px);
+        }
+        .info-item {
+            margin: 8px 0;
+            padding: 8px 12px;
+            background: #f8fbf9;
+            border-radius: 6px;
+            border-left: 4px solid #1a5f4a;
+        }
+        .label { font-weight: 600; color: #1a5f4a; }
+        .blockchain-badge {
+            display: inline-block;
+            background: #2e7d32;
+            color: white;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-left: 8px;
+        }
+        .hash {
+            font-family: monospace;
+            font-size: 0.8rem;
+            word-break: break-all;
+            background: #eee;
+            padding: 8px;
+            border-radius: 4px;
+            margin-top: 8px;
+        }
+        footer {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 24px;
+            padding: 16px;
+        }
+        .qr-hint {
+            background: #fff3e0;
+            border: 1px solid #ffcc80;
+            border-radius: 8px;
+            padding: 12px;
+            margin: 16px 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>中药制剂全流程溯源</h1>
+        <p>鉴定 → 炮制 → 调剂 → 制剂 · 区块链存证</p>
+        <span class="blockchain-badge">数据已上链 · 不可篡改</span>
+    </header>
+
+    <div class="qr-hint">
+        <strong>使用说明：</strong> 扫描各部分二维码可单独查看详情。本页面为全流程总览。
+    </div>
+
+    <div class="section" id="part1">
+        <h2>第一部分：中药鉴定</h2>
+        <p>各药材产地、批号、显微特征等信息，已单独上链存证。</p>
+        <div class="herb-grid">
+            <a class="herb-card" href="herbs/renshen.html">人参</a>
+            <a class="herb-card" href="herbs/baizhu.html">麸炒白术</a>
+            <a class="herb-card" href="herbs/wuweizi.html">蜜制五味子</a>
+            <a class="herb-card" href="herbs/fuling.html">茯苓</a>
+            <a class="herb-card" href="herbs/maidong.html">麦冬</a>
+            <a class="herb-card" href="herbs/gancao.html">炙甘草</a>
+        </div>
+    </div>
+
+    <div class="section" id="part2">
+        <h2>第二部分：中药炮制</h2>
+        <p>炮制工艺记录（部分药材）。</p>
+        <div class="herb-grid">
+            <a class="herb-card" href="process/baizhu-paozhi.html">麸炒白术</a>
+            <a class="herb-card" href="process/wuweizi-paozhi.html">蜜制五味子</a>
+            <a class="herb-card" href="process/gancao-paozhi.html">炙甘草</a>
+        </div>
+    </div>
+
+    <div class="section" id="part3">
+        <h2>第三部分：中药调剂</h2>
+        <div class="info-item"><span class="label">人参：</span> 4g</div>
+        <div class="info-item"><span class="label">麸炒白术：</span> 6g</div>
+        <div class="info-item"><span class="label">蜜制五味子：</span> 3g</div>
+        <div class="info-item"><span class="label">茯苓：</span> 4g</div>
+        <div class="info-item"><span class="label">麦冬：</span> 4g</div>
+        <div class="info-item"><span class="label">炙甘草：</span> 3g</div>
+        <p style="margin-top:12px;font-size:0.9rem;color:#666;">处方总量：24g，按比例配制。</p>
+    </div>
+
+    <div class="section" id="part4">
+        <h2>第四部分：中药制剂</h2>
+        <div class="info-item">
+            <span class="label">工艺：</span><br>
+            饮片60℃干燥，粉碎过五号筛；<br>
+            蜂蜜100℃-118℃炼制；<br>
+            药粉与炼蜜质量比1:0.8；<br>
+            蜂蜜晾至80℃-90℃，混匀，挫条，分粒，制丸；<br>
+            每丸3g。
+        </div>
+        <p style="margin-top:12px;font-size:0.9rem;">成品为蜜丸，每丸3g。</p>
+    </div>
+
+    <div class="section">
+        <h2>区块链存证信息</h2>
+        <p>本批次全流程数据哈希（SHA-256）：</p>
+        <div class="hash" id="full-hash">计算中...</div>
+        <p style="font-size:0.85rem;margin-top:8px;color:#666;">
+            可将此哈希值提交至公共区块链（如以太坊、BSC）或联盟链存证，实现真正不可篡改。
+        </p>
+    </div>
+
+    <footer>
+        中药制剂区块链溯源演示 · 仅供教学/演示使用<br>
+        扫码查看详情 · 数据来源于原始鉴定与炮制记录
+    </footer>
+
+    <script>
+        // 简单计算页面关键数据的哈希（演示用）
+        async function computeHash() {
+            const data = `人参:吉林省靖宇县|河北明珠药业|26070702|树脂道、草酸钙簇晶、网纹导管、梯纹导管
+麸炒白术:浙江磐安县|湖北民秦药业|250201|草酸钙针晶、菊糖、纤维、石细胞
+蜜制五味子:辽宁省本溪市|河北康益强药业|26060401|种皮表皮石细胞、种皮内层石细胞
+茯苓:安徽安庆|亳州市庆丰余堂|260301|菌丝、无色不规则颗粒状团块+分枝状团块
+麦冬:四川三台|安徽市仁德兴药材|2509003|草酸钙针晶、内皮层细胞、石细胞、木纤维
+炙甘草:甘肃陇西县|安国市誉林药业|260707|晶纤维、草酸钙方晶、具缘纹孔导管
+炮制-白术:蜜炙麸皮炒...每100kg白术片用蜜炙麸皮10kg
+炮制-五味子:文火+蜂蜜水...每100kg用炼蜜10kg
+炮制-甘草:蜜炙...每100kg用炼蜜25kg
+调剂:人参4g 白术6g 五味子3g 茯苓4g 麦冬4g 甘草3g
+制剂:60℃干燥过五号筛 蜜1:0.8 每丸3g`;
+            const encoder = new TextEncoder();
+            const dataBuffer = encoder.encode(data);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', dataBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            document.getElementById('full-hash').textContent = hashHex;
+        }
+        computeHash();
+    </script>
+</body>
+</html>
