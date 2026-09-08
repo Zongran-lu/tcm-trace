@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中药制剂 · 溯源</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        header {
+            background: #1a5f4a;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        header h1 { font-size: 1.4rem; }
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            margin-bottom: 16px;
+        }
+        .info-item {
+            margin: 12px 0;
+            padding: 10px 14px;
+            background: #f8fbf9;
+            border-radius: 8px;
+            border-left: 4px solid #1a5f4a;
+        }
+        .label { font-weight: 600; color: #1a5f4a; display: block; margin-bottom: 4px; }
+        .badge {
+            display: inline-block;
+            background: #2e7d32;
+            color: white;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-top: 8px;
+        }
+        .hash {
+            font-family: monospace;
+            font-size: 0.75rem;
+            word-break: break-all;
+            background: #eee;
+            padding: 8px;
+            border-radius: 4px;
+            margin-top: 8px;
+        }
+        a.back {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #1a5f4a;
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>中药制剂</h1>
+        <p>第四部分 · 区块链溯源</p>
+    </header>
+
+    <div class="card">
+        <div class="info-item">
+            <span class="label">工艺</span>
+            饮片60℃干燥，粉碎过五号筛；<br>
+            蜂蜜100℃-118℃炼制；<br>
+            药粉与炼蜜质量比1:0.8；<br>
+            蜂蜜晾至80℃-90℃，混匀，挫条，分粒，制丸；<br>
+            每丸3g。
+        </div>
+        <p style="margin-top:12px;font-size:0.9rem;color:#666;">成品为蜜丸，每丸3g。</p>
+        <span class="badge">数据已上链 · 不可篡改</span>
+        <div class="hash" id="hash">计算中...</div>
+    </div>
+
+    <a class="back" href="index.html">← 返回全流程总览</a>
+
+    <script>
+        async function computeHash() {
+            const data = "中药制剂|饮片60℃干燥粉碎过五号筛|蜂蜜100℃-118℃炼制|药粉与炼蜜质量比1:0.8|蜂蜜晾至80℃-90℃混匀挫条分粒制丸|每丸3g";
+            const encoder = new TextEncoder();
+            const dataBuffer = encoder.encode(data);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', dataBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+            document.getElementById('hash').textContent = "SHA-256: " + hashHex;
+        }
+        computeHash();
+    </script>
+</body>
+</html>
